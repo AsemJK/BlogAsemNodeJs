@@ -1,51 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const Post = require('../models/post');
+const blogController = require('../controllers/blogController');
 
-router.get('/', (req, res) => {
-    res.render('index', { title: 'Home' });
-})
+router.get('/', blogController.app_index);
 
-router.get('/about', (req, res) => {
-    res.render('about', { title: 'About us' });
-})
-router.get('/posts/create', (req, res) => {
-    res.render('create', { title: 'Create New Post' });
-})
+router.get('/about', blogController.app_about);
+router.get('/posts/create', blogController.post_get_create);
 
 //post routes
-router.get('/posts', (req, res) => {
-    Post.find().sort({createdAt: -1})
-        .then((result) => {
-            res.render('posts',{title: 'All Posts',posts: result});
-        })
-        ;
-});
+router.get('/posts', blogController.post_index);
 
-router.post('/posts',(req,res,next)=>{
-    const post = new Post(req.body);
-    post.save();
-    res.redirect('/posts');
-});
+router.post('/posts', blogController.post_create);
 
-router.get('/posts/:id',(req,res)=>{
-Post.findById(req.params.id)
-.then((result)=>
-{
-    if(result)
-    res.render('post',{title: 'Post in details',post: result})
-    else
-    res.redirect('/posts');    
-})
-.catch((err)=>{console.log(err);})
-;
-});
+router.get('/posts/:id', blogController.post_details);
 
-router.delete('/posts/:id',(req,res)=>{
-    Post.findByIdAndDelete(req.params.id)
-    .then((result)=>{res.json({redirect: '/posts'})})
-    .catch((err)=>console.log(err))
-});
+router.delete('/posts/:id', blogController.post_delete);
 
 
 module.exports = router;
