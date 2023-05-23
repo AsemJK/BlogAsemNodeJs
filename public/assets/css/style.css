@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500&display=swap");
+
+body {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+a,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+li {
+  font-family: "Wix Madefor Display", Arial;
+  padding: 0;
+  margin: 0;
+  color: #222222;
+  text-decoration: none;
+  list-style: none;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  text-transform: uppercase;
+}
+nav h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+nav li {
+  margin-left: 20px;
+}
+nav a,
+nav p {
+  font-weight: 500;
+}
+footer {
+  margin: 80px auto 20px;
+  text-align: center;
+  color: #777;
+}
+.content {
+  margin-inline: 5%;
+}
+.content form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.create-post input,
+.create-post textarea {
+  display: block;
+  padding: 8px;
+  margin: 10px 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+textarea {
+  height: 120px;
+}
+
+.post-a{
+  margin: 10px;
+  border: 1px solid #f1ecec;
+  border-radius: 4px;
+  padding: 2px;
+
+}
+.card{
+  border-left: 5px solid crimson;
+}
+.card:hover .card-title{
+  color: red;
+}
