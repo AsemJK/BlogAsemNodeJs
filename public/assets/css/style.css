@@ -85,3 +85,12 @@ textarea {
 .card:hover .card-title{
   color: red;
 }
+
+.post-details{
+  position: relative;
+}
+.del-post{
+  position: absolute;
+  top: 0;
+  right: 10px;
+}

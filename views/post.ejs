@@ -4,26 +4,35 @@
 
     <body>
         <%- include('./partials/nav.ejs') %>
-            <div class="blogs content">
+            <div class="post-details">
                 <h2>
                     <%= title %>
                 </h2>
                 <hr>              
                 <div class="card">
-                    <% if(post != null> 0){
-                        %>
-                        <h5 class="card-header"><%=post.createdAt.toLocaleDateString() %></h5>
-                        <div class="card-body">
-                            <h5 class="card-title"><%=post.title %></h5>
-                            <p class="card-text"><%=post.body%></p>
-                        </div>                       
-                    <% 
-                    } else{ %>
-                            <h3>No data</h3>
-                    <% } %>
+                    <h5 class="card-header"><%=post.createdAt.toLocaleDateString() %></h5>
+                    <div class="card-body">
+                        <h5 class="card-title"><%=post.title %></h5>
+                        <p class="card-text"><%=post.body%></p>
+                    </div>             
                 </div>
+                <a href="" class="btn btn-danger del-post delete" data-doc="<%= post._id%>">Delete</a>
             </div>
+            
             <%- include('./partials/footer.ejs')%>
+
+            <script>
+                const delebutton = document.querySelector('a.delete');
+                delebutton.addEventListener('click',(e)=>{
+                    const endPoint = `/posts/${delebutton.dataset.doc}`;
+                    fetch(endPoint,{
+                        method: 'DELETE'
+                    })
+                    .then((result)=>result.json())
+                    .then((data)=>{window.location.href = data.redirect;})
+                    .catch(err=>console.log(err))
+                })
+            </script>
     </body>
 
 </html>
